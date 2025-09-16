@@ -1,6 +1,6 @@
 {
-  "name": "@flexiweb/custom-version-view",
-  "version": "1.0.2",
+  "name": "@flexiweb/version-info",
+  "version": "1.0.3",
   "private": false,
   "bugs": "https://github.com/shefing/payload-tools/issues",
   "repository": "https://github.com/shefing/payload-tools",

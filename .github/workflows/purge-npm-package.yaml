@@ -14,7 +14,7 @@ on:
           - comments
           - cover-image
           - cross-collection
-          - custom-version-view
+          - version-info
           - field-type-components-override
           - icon-select
           - quickfilter

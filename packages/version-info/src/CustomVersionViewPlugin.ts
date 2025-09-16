@@ -32,7 +32,7 @@ const versionsPlugin =
           ]);
           //@ts-ignore
           if (!currentCollection.admin?.components?.views?.edit?.versions?.Component) {
-            versions.Component = '@flexiweb/custom-version-view/index';
+            versions.Component = '@flexiweb/version-info/index';
           }
         });
     }
@@ -50,7 +50,7 @@ const versionsPlugin =
               'edit',
               'versions',
             ]);
-            versions.Component = '@flexiweb/custom-version-view/index';
+            versions.Component = '@flexiweb/version-info/index';
           }
         });
     }
