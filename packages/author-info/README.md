@@ -7,7 +7,7 @@ Major changes:
 
 - Replace moment with luxon
 - Add better typing
-- Add english, germand and hungarian language support
+- Add english, german and hungarian language support
 
 ### Features
 

@@ -10,7 +10,7 @@ on:
         required: false
         type: string
         default: 'patch'
-        description: 'Version type to bump: patch (1.0.0 -> 1.0.1), minor (1.0.0 -> 1.1.0), major (1.0.0 -> 2.0.0)'
+        description: 'Version type to bump: patch, minor, major'
     secrets:
       NPM_TOKEN:
         required: true
@@ -22,13 +22,19 @@ jobs:
       run:
         working-directory: packages/${{ inputs.plugin-name }}
 
+    permissions:
+      contents: write # Needed for pushing commits
+      packages: write # Needed for publishing to NPM
+
     strategy:
       matrix:
         node-version: [20.x]
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for commits and tags
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -52,30 +58,24 @@ jobs:
         run: pnpm run build
 
       - name: Bump version
+        id: bump
         run: |
           echo "Current version: $(pnpm pkg get version)"
-          # Get current version
-          current_version=$(pnpm pkg get version | tr -d '"')
-
-          # Split version into major, minor, patch
-          IFS='.' read -r major minor patch <<< "$current_version"
-
-          # Calculate new version based on type
-          case "${{ inputs.version-type }}" in
-            "major")
-              new_version="$((major + 1)).0.0"
-              ;;
-            "minor")
-              new_version="$major.$((minor + 1)).0"
-              ;;
-            *)  # patch or default
-              new_version="$major.$minor.$((patch + 1))"
-              ;;
-          esac
-
-          # Update package.json
-          pnpm pkg set version="$new_version"
+          # Bump the version automatically using pnpm's semver support
+          new_version=$(pnpm version ${{ inputs.version-type }} --no-git-tag-version | tr -d '"')
           echo "New version: $new_version"
+          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add package.json
+          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}" || echo "No changes to commit"
+          # Push using GITHUB_TOKEN in URL for authentication
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to NPM
         run: |
