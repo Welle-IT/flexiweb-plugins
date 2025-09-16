@@ -1,3 +1,5 @@
+import { Operation, VerstionStatus } from './constants';
+
 export type IncomingCollectionVersions = {
   drafts?: boolean;
   maxPerDoc?: number;
@@ -11,3 +13,6 @@ export interface AuthorsInfoPluginConfig {
   /** The name of user name field in Users collection */
   usernameField?: string;
 }
+
+export type Operation = (typeof Operation)[keyof typeof Operation];
+export type VerstionStatus = (typeof VerstionStatus)[keyof typeof VerstionStatus];

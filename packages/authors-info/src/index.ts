@@ -99,8 +99,9 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         },
       },
       label: {
-        en: 'updateAt',
-        he: 'עודכן ב',
+        en: 'Updated At',
+        de: 'Geändert am',
+        hu: 'Frissítve',
       },
     });
   }
@@ -110,7 +111,8 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
       name: 'creator',
       label: {
         en: 'Created By',
-        he: 'נוצר על ידי',
+        de: 'Erstellt von',
+        hu: 'Létrehozó',
       },
       type: 'text',
       localized: true,
@@ -122,7 +124,8 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
       name: 'updator',
       label: {
         en: 'Updated By',
-        he: 'עודכן על ידי',
+        de: 'Geändert von',
+        hu: 'Frissítette',
       },
       type: 'text',
       localized: true,
@@ -137,14 +140,15 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         name: 'publishDate',
         label: {
           en: 'Published Date',
-          he: 'תאריך פרסום',
+          de: 'Veröffentlicht am',
+          hu: 'Közzétéve',
         },
         type: 'date',
         localized: true,
         admin: {
           date: {
             pickerAppearance: 'dayAndTime',
-            displayFormat: 'd MMM yyy: ,h:mm:ss a',
+            displayFormat: 'yyyy-MM-dd HH:mm:ss',
           },
           components: { Cell: '@flexiweb/authors-info/client#CreatedAtCell' },
         },
@@ -153,7 +157,8 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         name: 'publisher',
         label: {
           en: 'Published By',
-          he: 'פורסם על ידי',
+          de: 'Veröffentlicht von',
+          hu: 'Közzétette',
         },
         localized: true,
         type: 'text',
@@ -167,7 +172,8 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
   const authorTab: UnnamedTab = {
     label: {
       en: 'Author Data',
-      he: 'נתוני מחבר',
+      de: 'Autordaten',
+      hu: 'Szerző adatok',
     },
     fields: authorFields,
   };
@@ -180,7 +186,8 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
     const contentTab: UnnamedTab = {
       label: {
         en: 'Content',
-        he: 'תוכן',
+        de: 'Inhalt',
+        hu: 'Tartalom',
       },
       fields: [...fields.filter((field) => (field as FieldAffectingData).admin?.hidden !== true)],
     };
