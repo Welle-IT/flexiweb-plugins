@@ -1,2 +1,2 @@
-export { CreatedAtCell } from '../ui/index.jsx';
-export { UpdatedAtCell } from '../ui/index.jsx';
+export { CreatedAtCell } from '../ui/index.js';
+export { UpdatedAtCell } from '../ui/index.js';
