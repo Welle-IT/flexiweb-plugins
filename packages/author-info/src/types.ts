@@ -1,4 +1,4 @@
-import { Operation, VerstionStatus } from './constants.js';
+import { Operation, VerstionStatus, supportedLanguages } from './constants.js';
 
 export type IncomingCollectionVersions = {
   drafts?: boolean;
@@ -16,3 +16,4 @@ export interface AuthorsInfoPluginConfig {
 
 export type Operation = (typeof Operation)[keyof typeof Operation];
 export type VerstionStatus = (typeof VerstionStatus)[keyof typeof VerstionStatus];
+export type SupportedLanguage = (typeof supportedLanguages)[number];

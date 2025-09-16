@@ -1,21 +1,19 @@
 'use client';
 import React, { Fragment } from 'react';
 import { DateTime } from 'luxon';
+import { isSupportedLanguage } from '../utils/lang';
+import { NOT_APPLICABLE } from '../constants';
 
 export interface TableCellProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  cellData: any;
-  fieldKey: 'createdAt' | 'updatedAt';
+  cellData: string | null; // PayloadCMS passes the raw value
+  fieldKey: 'createdAt' | 'updatedAt'; // may not be strictly needed
+  language: string;
 }
 
-export const CreatedAtCellClient: React.FC<TableCellProps> = (props) => {
-  const { cellData, fieldKey } = props;
+export const CreatedAtCellClient: React.FC<TableCellProps> = ({ cellData, language }) => {
+  const locale = isSupportedLanguage(language) ? language : 'en';
 
-  const validCellData = cellData?.rowData?.[fieldKey] ?? null;
+  const fromNow = cellData ? DateTime.fromISO(cellData).setLocale(locale).toRelative() : 'N/A';
 
-  const fromNow = validCellData
-    ? DateTime.fromISO(validCellData).setLocale('he').toRelative()
-    : 'N/A';
-
-  return <Fragment>{fromNow ?? 'N/A'}</Fragment>;
+  return <Fragment>{fromNow ?? NOT_APPLICABLE}</Fragment>;
 };
