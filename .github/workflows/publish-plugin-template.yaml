@@ -80,7 +80,7 @@ jobs:
       - name: Publish to NPM
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          echo "@shefing:registry=https://registry.npmjs.org/" >> ~/.npmrc
+          echo "@flexiweb:registry=https://registry.npmjs.org/" >> ~/.npmrc
           pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
