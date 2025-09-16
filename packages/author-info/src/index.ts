@@ -8,7 +8,7 @@ const defaultConfig: Required<AuthorsInfoPluginConfig> = {
   excludedGlobals: [],
   usernameField: 'name',
 };
-export const addAuthorsFields =
+export const authorInfoPlugin =
   (pluginConfig: AuthorsInfoPluginConfig = {}) =>
   (config: Config): Config => {
     const mergedConfig: Required<AuthorsInfoPluginConfig> = { ...defaultConfig, ...pluginConfig };
@@ -78,7 +78,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         disableBulkEdit: true,
         hidden: true,
         components: {
-          Cell: '@flexiweb/authors-info/client#CreatedAtCell',
+          Cell: '@flexiweb/author-info/client#CreatedAtCell',
         },
       },
       // The default sort for list view is createdAt. Thus, enabling indexing by default, is a major performance improvement, especially for large or a large amount of collections.
@@ -95,7 +95,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         disableBulkEdit: true,
         hidden: true,
         components: {
-          Cell: '@flexiweb/authors-info/client#UpdatedAtCell',
+          Cell: '@flexiweb/author-info/client#UpdatedAtCell',
         },
       },
       label: {
@@ -150,7 +150,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
             pickerAppearance: 'dayAndTime',
             displayFormat: 'yyyy-MM-dd HH:mm:ss',
           },
-          components: { Cell: '@flexiweb/authors-info/client#CreatedAtCell' },
+          components: { Cell: '@flexiweb/author-info/client#CreatedAtCell' },
         },
       },
       {

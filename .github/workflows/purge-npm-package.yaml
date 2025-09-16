@@ -9,7 +9,7 @@ on:
         type: choice
         options:
           - authorization
-          - authors-info
+          - author-info
           - color-picker
           - comments
           - cover-image

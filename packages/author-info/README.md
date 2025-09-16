@@ -21,7 +21,7 @@ With this **fully automated** tracking system, you'll always have complete visib
 
 Install the plugin using your node package manager, e.g:
 
-`pnpm add @flexiweb/authors-info`
+`pnpm add @flexiweb/author-info`
 
 ### Setup
 

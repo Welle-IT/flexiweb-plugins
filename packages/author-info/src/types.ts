@@ -1,4 +1,4 @@
-import { Operation, VerstionStatus } from './constants';
+import { Operation, VerstionStatus } from './constants.js';
 
 export type IncomingCollectionVersions = {
   drafts?: boolean;

@@ -8,7 +8,7 @@ on:
         required: true
         type: choice
         options:
-          - authors-info
+          - author-info
           - comments
           - cover-image
           - cross-collection

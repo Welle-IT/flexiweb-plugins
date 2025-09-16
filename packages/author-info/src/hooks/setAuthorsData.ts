@@ -1,6 +1,6 @@
 import { PayloadRequest } from 'payload';
-import { DEFAULT_AUTHOR_NAME, VerstionStatus } from '../constants';
-import { Operation } from '../constants';
+import { DEFAULT_AUTHOR_NAME, VerstionStatus } from '../constants.js';
+import { Operation } from '../constants.js';
 interface DataWithUpdatedByField {
   [key: string]: unknown;
   [key: number]: unknown; // Allow numeric keys as well if needed

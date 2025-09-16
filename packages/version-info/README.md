@@ -26,7 +26,7 @@ plugins: [
     })
 ```
 
-The updated by field in versions relies on the authors-info package.
+The updated by field in versions relies on the author-info package.
 
 ### Collection Configuration
 
