@@ -1,6 +1,6 @@
 {
   "name": "@flexiweb/author-info",
-  "version": "1.2.11",
+  "version": "1.2.12",
   "private": false,
   "bugs": "https://github.com/Welle-IT/flexiweb-plugins/issues",
   "repository": "https://github.com/Welle-IT/flexiweb-plugins",
@@ -37,7 +37,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
     "prepublishOnly": "pnpm clean && pnpm build",
     "reinstall": "rm -rf node_modules .next && rm -rf .next && rm pnpm-lock.yaml  && pnpm install"
-  },  
+  },
   "peerDependencies": {
     "payload": "3.55.1",
     "@payloadcms/ui": "3.55.1",
