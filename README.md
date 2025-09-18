@@ -6,7 +6,7 @@ Huge thanks for [Shefing](https://github.com/shefing) for creating [this repo](h
 
 ### 🔌 **Available Plugins** (Compatible with Payload 3.55.1)
 
-1. ** [RBAC](packages/rbac/)**
+1. **[RBAC](packages/rbac/)**
    Control your access rules from the admin panel with ease. Define a role, set up its permissions by setting create, read, update, delete, publish access on collections or globals. It does not end there. With the **Advanced** option you can define Where queries right there too.
 
 2. **[Author Info](packages/author-info/)**  
