@@ -4,26 +4,52 @@ This repository contains a set of powerful plugins designed to enhance your [Fle
 
 Huge thanks for [Shefing](https://github.com/shefing) for creating [this repo](https://github.com/shefing/payload-tools). Flexiweb plugin collection builds on top of Shefing and other open source contributors work.
 
-### 🔌 **Available Plugins** (Compatible with Payload 3.0)
+### 🔌 **Available Plugins** (Compatible with Payload 3.55.1)
 
-2. **👤 [Author Info](packages/author-info/)**  
+1. ** [RBAC](packages/rbac/)**
+   Control your access rules from the admin panel with ease. Define a role, set up its permissions by setting create, read, update, delete, publish access on collections or globals. It does not end there. With the **Advanced** option you can define Where queries right there too.
+
+2. **[Author Info](packages/author-info/)**  
    Automatically display **author information** in the authoring interface, including details like **creator, updaters, publishers**, and the **last publish date**.
 
-3. **💬 [Rich-text Comments](packages/comments/)**  
-   Enable **inline comments and discussions** directly within the Payload authoring interface. This plugin supports **rich text commenting** using [Lexical](https://lexical.dev/), perfect for content collaboration.
+3. **[Version Info](packages/version-info/)**  
+   TBD
 
-4. **📋 [Right Panel](packages/right-panel/)**  
-   Enhance the editing experience with a **custom right-side panel**. This view allows you to manage **related entities** side-by-side, improving productivity when working with complex data relationships.
+4. **[Audit](packages/audit/)**  
+   TBD
 
-5. **📝 [Custom Version View](packages/version-info/)**  
-   Improve version control with a **custom version view** that displays "**Updated at**" and "**Updated by**" fields. This plugin integrates seamlessly with the [Authors Info](packages/author-info/) plugin.
+5. **[Appointments](packages/appointments/)**  
+   TBD
 
-6. **🔗 [Cross-Collection Config](packages/cross-collection/)**  
-   The **Cross-Collection Config Plugin** empowers you to modify the view of components in Payload CMS,
-   injecting **custom behaviors** and offering **global configuration capabilities** not natively supported.
+6. **[Custom Fields](packages/custom-fields/)**
+   TBD
 
-7. **⚙️ [Field-type Component Override](packages/field-type-components-override/)**  
-   Dynamically override all fields of a specific type in Payload CMS by replacing their default components with **custom ones—seamlessly** and **automatically**. This plugin allows you to define a field type once and apply your custom component globally across your collections.
+7. **[Web](packages/web/)**
+   TBD
+
+8. **[Blocks](packages/blocks/)**
+   TBD
+
+9. **[Speed Insigths](packages/speed-insights/)**
+   TBD
+
+10. **[Inventory](packages/inventory/)**
+    TBD
+
+11. **[Employees](packages/employees/)**
+    TBD
+
+12. **[Rich-Text Comments](packages/rich-text-comments/)**
+    TBD
+
+13. **[Right Panel](packages/right-panel/)**
+    TBD
+
+14. **[Restaurant Manager](packages/restaurant-manager/)**
+    TBD
+
+15. **[Core](packages/restaurant-core/)**
+    TBD
 
 ---
 
