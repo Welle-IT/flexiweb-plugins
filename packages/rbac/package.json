@@ -1,0 +1,63 @@
+{
+  "name": "@flexiweb/rbac",
+  "version": "1.0.0",
+  "private": false,
+  "bugs": "https://github.com/Welle-IT/flexiweb-plugins/issues",
+  "repository": "https://github.com/Welle-IT/flexiweb-plugins",
+  "license": "MIT",
+  "author": "flexiweb",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "require": "./dist/types/index.js"
+    },
+    "./constants": {
+      "import": "./dist/constants/index.js",
+      "require": "./dist/constants/index.js"
+    },
+    "./access": {
+      "import": "./dist/access/index.js",
+      "require": "./dist/access/index.js"
+    },
+    "./collections": {
+      "import": "./dist/collections/index.js",
+      "require": "./dist/collections/index.js"
+    },
+    "./fields": {
+      "import": "./dist/fields/index.js",
+      "require": "./dist/fields/index.js"
+    }
+  },
+  "scripts": {
+    "build": "pnpm copyfiles && pnpm build:swc && pnpm build:types",
+    "build:swc": "swc ./src -d ./dist --config-file .swcrc",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png,json}\" dist/",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix --ext .ts,.tsx src",
+    "prepublishOnly": "pnpm clean && pnpm build",
+    "reinstall": "rm -rf node_modules .next && rm -rf .next && rm pnpm-lock.yaml  && pnpm install"
+  },
+  "peerDependencies": {
+    "payload": "3.55.1"
+  },
+  "devDependencies": {
+    "payload": "3.55.1",
+    "typescript": "^5.5.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

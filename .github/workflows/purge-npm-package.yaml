@@ -8,18 +8,9 @@ on:
         required: true
         type: choice
         options:
-          - authorization
           - author-info
-          - color-picker
-          - comments
-          - cover-image
-          - cross-collection
           - version-info
-          - field-type-components-override
-          - icon-select
-          - quickfilter
-          - right-panel
-          - reset-list-view
+          - rbac
       confirm-purge:
         description: 'Type "PURGE" to confirm (this action is irreversible)'
         required: true

@@ -9,12 +9,8 @@ on:
         type: choice
         options:
           - author-info
-          - comments
-          - cover-image
-          - cross-collection
           - version-info
-          - field-type-components-override
-          - right-panel
+          - rbac
       version-type:
         description: 'Version to bump: patch (1.0.0 -> 1.0.1), minor (1.0.0 -> 1.1.0), major (1.0.0 -> 2.0.0)'
         required: true
