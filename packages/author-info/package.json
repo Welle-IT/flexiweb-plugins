@@ -37,12 +37,17 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx src",
     "prepublishOnly": "pnpm clean && pnpm build",
     "reinstall": "rm -rf node_modules .next && rm -rf .next && rm pnpm-lock.yaml  && pnpm install"
+  },  
+  "peerDependencies": {
+    "payload": "3.55.1",
+    "@payloadcms/ui": "3.55.1",
+    "i18next": "^23.0.0"
   },
   "devDependencies": {
-    "@payloadcms/ui": "3.35.1",
+    "payload": "3.55.1",
+    "@payloadcms/ui": "3.55.1",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
-    "payload": "3.35.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "typescript": "^5.7.3"
@@ -52,10 +57,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "peerDependencies": {
-    "@payloadcms/ui": "3.35.1",
-    "i18next": "^23.0.0",
-    "payload": "3.35.1"
   }
 }
