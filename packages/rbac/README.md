@@ -13,12 +13,23 @@ Define roles with **any combination of permissions**—**create, read, update, d
 
 Each role you create consists of:  
 ✅ **Granular Permissions:** Assign **create, read, update, delete, publish** permissions to collections and globals.  
-✅ **Advanced Access Queries:** Define **Where** queries for your read, update or delete permissions.
+✅ **Advanced Access Queries:** Define **Where** queries for your read, update or delete permissions.  
 ✅ **Hierarchical Access:**
+✅ **Public Read Access:** Define collections that are readable by public users (no authentication required).
 
 With this powerful system, you have complete flexibility in managing access control—ensuring the right people have the right level of control.
 
 Administrators can set as many permissions he/she wants within a role and as many as roles within a user
+
+### Public Read Access
+
+The `publicReadable` configuration option allows you to specify which collections can be read by users who are not logged in. This is useful for:
+
+- **Public content** like blog posts, news articles, or product catalogs
+- **Marketing pages** that should be accessible to everyone
+- **Public APIs** that don't require authentication
+
+When a collection is marked as `publicReadable`, users without authentication can only **read** the collection data. All other operations (create, update, delete, publish) still require proper authentication and permissions.
 
 ### Install
 
@@ -37,6 +48,7 @@ plugins: [
     rolesCollection: 'roles', // name of the collection defining the roles
     permissionsField: 'permissions', // name of the field within the role collection
     // excludedCollections: ['users'], // array of collections names to exclude
+    // publicReadable: ['posts', 'pages'], // array of collections that are readable by public (no user logged in)
   }),
 ];
 ```

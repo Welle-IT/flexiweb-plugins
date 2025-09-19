@@ -12,6 +12,10 @@ export const hasAccessToAction =
         | Where
         | Promise<boolean | Where>;
     } else {
+      // Check if this collection is publicly readable and the action is 'read'
+      if (action === 'read' && pluginConfig.publicReadable?.includes(slugName)) {
+        return true;
+      }
       return false;
     }
   };

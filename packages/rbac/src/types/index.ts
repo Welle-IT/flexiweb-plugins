@@ -5,6 +5,7 @@ export type AuthorizationPluginConfig = {
   permissionsField?: string;
   excludedCollections?: CollectionSlug[];
   includedCollections?: CollectionSlug[];
+  publicReadable?: CollectionSlug[];
 };
 
 export type PermissionType = 'create' | 'read' | 'update' | 'delete' | 'publish';
