@@ -135,8 +135,9 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
     },
   ];
   if (hasDraft) {
-    authorFields.push(
-      {
+    // Check if publishedAt field already exists
+    if (fields.filter((field) => 'name' in field && field.name === 'publishedAt').length === 0) {
+      authorFields.push({
         name: 'publishedAt',
         label: {
           en: 'Published Date',
@@ -152,8 +153,12 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
           },
           components: { Cell: '@flexiweb/author-info/client#CreatedAtCell' },
         },
-      },
-      {
+      });
+    }
+
+    // Check if publishedBy field already exists
+    if (fields.filter((field) => 'name' in field && field.name === 'publishedBy').length === 0) {
+      authorFields.push({
         name: 'publishedBy',
         label: {
           en: 'Published By',
@@ -165,8 +170,8 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         admin: {
           readOnly: true,
         },
-      },
-    );
+      });
+    }
   }
 
   const authorTab: UnnamedTab = {
