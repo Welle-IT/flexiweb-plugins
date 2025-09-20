@@ -90,6 +90,7 @@ export const Roles: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'updatedBy', 'createdBy'],
     hidden: (ctx) => {
+      if (!Boolean(ctx.user)) return true;
       return !Boolean(ctx.user.isAdmin);
     },
   },
