@@ -68,15 +68,7 @@ export const Roles: CollectionConfig = {
   access: {
     create: isAdmin,
     read: async (ctx) => {
-      if (!Boolean(ctx.req.user)) return false;
-      if (isAdmin(ctx)) return true;
-      const roles: [] = ctx.req.user.userRoles || [];
-      const roleIds = roles.map((role: { id: number }) => role.id);
-      return {
-        id: {
-          in: roleIds,
-        },
-      };
+      return Boolean(ctx.req.user);
     },
     update: isAdmin,
     delete: isAdmin,
