@@ -88,7 +88,7 @@ export const Roles: CollectionConfig = {
       hu: 'Adminisztrátor',
     },
     useAsTitle: 'name',
-    defaultColumns: ['name', 'updator', 'creator'],
+    defaultColumns: ['name', 'updatedBy', 'createdBy'],
     hidden: (ctx) => {
       return !Boolean(ctx.user.isAdmin);
     },

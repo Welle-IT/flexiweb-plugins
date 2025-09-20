@@ -66,7 +66,7 @@ export const VersionsView: PayloadServerReactComponent<EditViewComponent> = asyn
         },
       });
       versionsData.docs.forEach((doc) => {
-        if (doc.version.updator) doc.updator = doc.version.updator;
+        if (doc.version.updatedBy) doc.updatedBy = doc.version.updatedBy;
       });
       if (collectionConfig?.versions?.drafts) {
         latestDraftVersion = await getLatestVersion({

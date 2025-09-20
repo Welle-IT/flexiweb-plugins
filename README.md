@@ -10,7 +10,7 @@ Huge thanks for [Shefing](https://github.com/shefing) for creating [this repo](h
    Control your access rules from the admin panel with ease. Define a role, set up its permissions by setting create, read, update, delete, publish access on collections or globals. It does not end there. With the **Advanced** option you can define Where queries right there too.
 
 2. **[Author Info](packages/author-info/)**  
-   Automatically display **author information** in the authoring interface, including details like **creator, updaters, publishers**, and the **last publish date**.
+   Automatically display **author information** in the authoring interface, including details like **createdBy, updaters, publishedBys**, and the **last publish date**.
 
 3. **[Version Info](packages/version-info/)**  
    TBD

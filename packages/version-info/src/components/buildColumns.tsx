@@ -14,9 +14,9 @@ import { AutosaveCell } from './cells/AutosaveCell/index.js';
 import { CreatedAtCell } from './cells/CreatedAt/index.js';
 import { IDCell } from './cells/ID/index.js';
 
-type Updator = {
-  creator?: string | null;
-  updator?: string | null;
+type updatedBy = {
+  createdBy?: string | null;
+  updatedBy?: string | null;
   createdAt: string;
   updatedAt: string;
   autosave?: boolean | undefined;
@@ -37,7 +37,7 @@ export const buildVersionColumns = ({
   config: SanitizedConfig;
   docID?: number | string;
   ///* eslint-disable @typescript-eslint/ban-ts-comment */@typescript-eslint/no-explicit-any
-  docs: PaginatedDocs<Updator>['docs'];
+  docs: PaginatedDocs<updatedBy>['docs'];
   globalConfig?: SanitizedGlobalConfig;
   i18n: I18n;
   latestDraftVersion?: string;
@@ -84,15 +84,15 @@ export const buildVersionColumns = ({
   ];
 
   columns.splice(1, 0, {
-    accessor: 'updator',
+    accessor: 'updatedBy',
     active: true,
     field: {
       name: '',
       type: 'text',
     },
-    Heading: <SortColumn Label={'Updated by'} disable name='updator' />,
+    Heading: <SortColumn Label={'Updated by'} disable name='updatedBy' />,
     renderedCells: docs.map((doc, i) => {
-      return <IDCell id={doc.updator as string} key={i} />;
+      return <IDCell id={doc.updatedBy as string} key={i} />;
     }),
   });
 

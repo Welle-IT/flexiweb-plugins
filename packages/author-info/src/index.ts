@@ -31,10 +31,10 @@ export const authorInfoPlugin =
             beforeChange: [
               ...((currentCollection.hooks && currentCollection.hooks.beforeChange) || []),
               setAuthorsData(
-                'updator',
-                'creator',
-                'publisher',
-                'publishDate',
+                'updatedBy',
+                'createdBy',
+                'publishedBy',
+                'publishedAt',
                 mergedConfig.usernameField,
               ),
             ],
@@ -50,10 +50,10 @@ export const authorInfoPlugin =
             beforeChange: [
               ...((globalConfig.hooks && globalConfig.hooks.beforeChange) || []),
               setAuthorsData(
-                'updator',
-                'creator',
-                'publisher',
-                'publishDate',
+                'updatedBy',
+                'createdBy',
+                'publishedBy',
+                'publishedAt',
                 mergedConfig.usernameField,
                 true,
               ),
@@ -108,7 +108,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
 
   const authorFields: Field[] = [
     {
-      name: 'creator',
+      name: 'createdBy',
       label: {
         en: 'Created By',
         de: 'Erstellt von',
@@ -121,7 +121,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
       },
     },
     {
-      name: 'updator',
+      name: 'updatedBy',
       label: {
         en: 'Updated By',
         de: 'Geändert von',
@@ -137,7 +137,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
   if (hasDraft) {
     authorFields.push(
       {
-        name: 'publishDate',
+        name: 'publishedAt',
         label: {
           en: 'Published Date',
           de: 'Veröffentlicht am',
@@ -154,7 +154,7 @@ const processFields = (fields: Field[], hasDraft: boolean): Field[] => {
         },
       },
       {
-        name: 'publisher',
+        name: 'publishedBy',
         label: {
           en: 'Published By',
           de: 'Veröffentlicht von',
