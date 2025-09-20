@@ -2,6 +2,7 @@ import { Access, CollectionConfig, Config, GlobalConfig } from 'payload';
 import { hasAccessToAction } from './utils/hasAccessToAction.js';
 import { populateOptions } from './utils/populateFieldOptions.js';
 import { AuthorizationPluginConfig } from './types/index.js';
+import { mergeAccessControl } from './utils/mergeAccessControls.js';
 
 export const roleBasedAccessControlPlugin =
   (pluginConfig: AuthorizationPluginConfig) =>
@@ -33,27 +34,39 @@ export const roleBasedAccessControlPlugin =
 
     const config: Config = {
       ...incomingConfig,
-      collections: incomingConfig.collections?.map((collection) => ({
-        ...collection,
-        ...((pluginConfig.includedCollections
+      collections: incomingConfig.collections?.map((collection) => {
+        const shouldApplyPlugin = pluginConfig.includedCollections
           ? pluginConfig.includedCollections.includes(collection.slug)
           : pluginConfig.excludedCollections
             ? !pluginConfig.excludedCollections.includes(collection.slug)
-            : true) && {
-          access: collection.labels
-            ? createAccessCollection(
-                collection.slug,
-                String(collection.labels.plural ? collection.labels.plural : collection.labels),
-              )
-            : createAccessCollection(collection.slug),
-        }),
-      })) as CollectionConfig[],
-      globals: incomingConfig.globals?.map((global) => ({
-        ...global,
-        access: global.label
+            : true;
+
+        if (!shouldApplyPlugin) {
+          return collection;
+        }
+
+        const pluginAccess = collection.labels
+          ? createAccessCollection(
+              collection.slug,
+              String(collection.labels.plural ? collection.labels.plural : collection.labels),
+            )
+          : createAccessCollection(collection.slug);
+
+        return {
+          ...collection,
+          access: mergeAccessControl(collection.access, pluginAccess),
+        };
+      }) as CollectionConfig[],
+      globals: incomingConfig.globals?.map((global) => {
+        const pluginAccess = global.label
           ? createAccess(global.slug, String(global.label))
-          : createAccess(global.slug),
-      })) as GlobalConfig[],
+          : createAccess(global.slug);
+
+        return {
+          ...global,
+          access: mergeAccessControl(global.access, pluginAccess),
+        };
+      }) as GlobalConfig[],
     };
 
     config.collections?.forEach((collection) => {

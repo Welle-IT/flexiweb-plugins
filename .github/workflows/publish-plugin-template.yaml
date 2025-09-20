@@ -66,12 +66,18 @@ jobs:
           echo "New version: $new_version"
           echo "new_version=$new_version" >> $GITHUB_OUTPUT
 
+      - name: Get package name
+        id: package-name
+        run: |
+          PACKAGE_NAME=$(pnpm pkg get name | tr -d '"')
+          echo "package_name=$PACKAGE_NAME" >> $GITHUB_OUTPUT
+
       - name: Commit version bump
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add package.json
-          git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }}" || echo "No changes to commit"
+          git commit -m "release: ${{ steps.package-name.outputs.package_name }} - Release new version ${{ steps.bump.outputs.new_version }}" || echo "No changes to commit"
           # Push using GITHUB_TOKEN in URL for authentication
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref_name }}
         env:

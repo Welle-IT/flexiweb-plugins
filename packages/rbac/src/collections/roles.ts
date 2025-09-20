@@ -67,7 +67,17 @@ export const Roles: CollectionConfig = {
   },
   access: {
     create: isAdmin,
-    read: isAdmin,
+    read: async (ctx) => {
+      if (!Boolean(ctx.req.user)) return false;
+      if (isAdmin(ctx)) return true;
+      const roles: [] = ctx.req.user.userRoles || [];
+      const roleIds = roles.map((role: { id: number }) => role.id);
+      return {
+        id: {
+          in: roleIds,
+        },
+      };
+    },
     update: isAdmin,
     delete: isAdmin,
   },
@@ -79,6 +89,9 @@ export const Roles: CollectionConfig = {
     },
     useAsTitle: 'name',
     defaultColumns: ['name', 'updator', 'creator'],
+    hidden: (ctx) => {
+      return !Boolean(ctx.user.isAdmin);
+    },
   },
   fields: [
     {
@@ -131,6 +144,7 @@ export const Roles: CollectionConfig = {
         return true;
       },
       access: {
+        read: isAdminFieldLevel,
         create: isAdminFieldLevel,
         update: isAdminFieldLevel,
       },

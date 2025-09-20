@@ -16,10 +16,21 @@ Each role you create consists of:
 ✅ **Advanced Access Queries:** Define **Where** queries for your read, update or delete permissions.  
 ✅ **Hierarchical Access:**
 ✅ **Public Read Access:** Define collections that are readable by public users (no authentication required).
+✅ **Respects Existing Access Control:** If collections or globals already have access control defined, the plugin will only add missing access controls without overriding existing ones.
 
 With this powerful system, you have complete flexibility in managing access control—ensuring the right people have the right level of control.
 
 Administrators can set as many permissions he/she wants within a role and as many as roles within a user
+
+### Access Control Priority
+
+The plugin respects existing access control definitions on collections and globals. This means:
+
+- **Existing access control takes priority** - If a collection or global already has `read`, `update`, `create`, or `delete` access defined, the plugin will not override these
+- **Plugin fills gaps** - The plugin only adds access control for operations that don't already have access control defined
+- **Flexible integration** - You can use the plugin alongside custom access control logic without conflicts
+
+This behavior ensures that your existing access control logic remains intact while still benefiting from the plugin's role-based permissions where needed.
 
 ### Public Read Access
 
@@ -80,3 +91,29 @@ When `isAdmin` is **enabled**, the user has **full access** to the system, inclu
 ✅ **Access admin-only features**
 
 This role ensures complete control over the CMS, allowing seamless content management.
+
+### Role Collection Access Control
+
+The roles collection has special access control logic built-in:
+
+#### **Read Access Logic**
+
+- **Admins**: Can read all roles
+- **Regular users**: Can only read their own assigned roles
+- **Unauthenticated users**: Cannot read any roles
+
+This ensures users can always see their own roles for reference, while maintaining security by preventing access to other users' roles.
+
+#### **Hidden Logic**
+
+- **Admins**: Can see and manage the roles collection in the admin panel
+- **Regular users**: The roles collection is completely hidden from the admin interface
+
+This prevents regular users from accessing role management while still allowing them to see their own role information when needed.
+
+#### **Field-Level Access**
+
+- **Permissions field**: Only admins can read, create, or update role permissions
+- **Other fields**: Regular users can read basic role information (name, etc.) for their assigned roles
+
+This granular control ensures that sensitive permission data is only accessible to administrators.
